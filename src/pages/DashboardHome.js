@@ -18,7 +18,6 @@ export default function DashboardHome() {
   // console.log(gameData);
   function decodeContent(str) {
     // Going backwards: from bytestream, to percent-encoding, to original string.
-    console.log(Buffer.from(str, 'base64'));
     return decodeURIComponent(
       atob(str)
         .split('')
