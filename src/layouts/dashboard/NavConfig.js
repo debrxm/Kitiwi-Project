@@ -12,8 +12,8 @@ const navConfig = [
     icon: getIcon('ic:round-space-dashboard'),
   },
   {
-    title: 'analytics',
-    path: '/dashboard/analytics',
+    title: 'leaderboard',
+    path: '/dashboard/leaderboard',
     icon: getIcon('majesticons:analytics'),
   },
   {
@@ -22,8 +22,8 @@ const navConfig = [
     icon: getIcon('lucide:coffee'),
   },
   {
-    title: 'projects',
-    path: '/dashboard/projects',
+    title: 'games',
+    path: '/dashboard/games',
     icon: getIcon('fa6-solid:diagram-project'),
   },
   {

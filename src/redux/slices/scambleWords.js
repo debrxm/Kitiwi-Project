@@ -184,7 +184,6 @@ export function onNextLevel(data) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      //
       dispatch(slice.actions.nextLevel(data));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
