@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-plusplus */
-/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
+import { Icon } from '@iconify/react';
 import ReactCountdownClock from 'react-countdown-clock';
 // @mui
 import { useTheme } from '@mui/material/styles';
@@ -19,6 +21,7 @@ import {
 } from '../redux/slices/scambleWords';
 import { useDispatch, useSelector } from '../redux/store';
 // components
+import { MFab } from '../components/@material-extend';
 import Page from '../components/Page';
 
 // ----------------------------------------------------------------------
@@ -123,8 +126,8 @@ export default function DashboardHome() {
     const i = gameData.c.opt.indexOf(word);
     const isAlreadyFound = gameData.c.userAnswers.indexOf(word);
     if (i !== -1 && isAlreadyFound === -1) {
-      // this.$store.dispatch("validWord", { value: word });
-      // this.$store.dispatch("lastWord", { value: word });
+      dispatch(onValidWord({ value: word }));
+      dispatch(onLastWord({ value: word }));
       for (let j = 0; j < dropArea.length; j++) {
         // this.$emit(
         //   "bringDownAll",
@@ -137,9 +140,9 @@ export default function DashboardHome() {
       dispatch(onUpdateScore(100 * (dropArea.length + 1)));
     } else {
       if (isAlreadyFound !== -1) {
-        // this.$emit('setError', this.$store.state.error.exist);
+        // this.$emit('setError', error.exist);
       } else {
-        // this.$emit('setError', this.$store.state.error.invalid);
+        // this.$emit('setError', error.invalid);
       }
       clearAction();
     }
@@ -162,7 +165,16 @@ export default function DashboardHome() {
   function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
+  function shuffleQuestion() {
+    const q = gameData.c.ques;
+    let arr = q.slice();
+    arr = shuffle(arr);
+    const li = document.querySelectorAll('#q-area li');
+  }
+
   function shuffle(arr) {
+    console.log(arr);
     let currIndex = arr.length;
     let tempValue;
     let randomIndex;
@@ -187,38 +199,47 @@ export default function DashboardHome() {
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Hello
-        </Typography>
-        <ul id="drop-area">
-          {gameData.c?.ques.map((item, index) => (
-            <button
-              key={index - 1}
-              className="inactive"
-              data={dropAreaData(index)}
-              data-id={dropArea[index - 1]}
-              onClick={(e) => letterDown(e, dropArea[index - 1])}
-            >
-              {dropAreaData(index)}
-            </button>
-          ))}
-        </ul>
-        <ul id="drop-area">
-          {gameData.c?.ques.map((item, index) => (
-            <button
-              key={index - 1}
-              className="inactive"
-              data={dropAreaData(index)}
-              data-id={dropArea[index - 1]}
-              onClick={(e) => letterDown(e, item)}
-            >
-              {item}
-            </button>
-          ))}
-        </ul>
-        <ul id="cloners">{/*  */}</ul>
-        <button onClick={(e) => clearAction()}>clear</button>
-        <button onClick={(e) => shuffle(gameData.c.ques.slice())}>shuffle</button>
+        <div id="gameApp">
+          <div className="game-container">
+            {/* <ul id="drop-area">
+              {gameData.c?.ques.map((item, index) => (
+                <li
+                  key={index - 1}
+                  className="inactive"
+                  index={index}
+                  data={dropAreaData(index)}
+                  data-id={dropArea[index - 1]}
+                  onClick={(e) => letterDown(e, dropArea[index - 1])}
+                >
+                  {dropAreaData(index)}
+                </li>
+              ))}
+            </ul> */}
+            <ul id="cloners">{/*  */}</ul>
+            <ul id="q-area">
+              {gameData.c?.ques.map((item, index) => (
+                <li
+                  key={index - 1}
+                  index={index}
+                  data={dropAreaData(index)}
+                  data-id={item}
+                  onClick={(e) => letterDown(e, item)}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <MFab onClick={(e) => clearAction()} variant="extended" size="small" color="default">
+          <Icon icon="ic:round-clear-all" width={22} />
+          clear
+        </MFab>
+        <MFab onClick={(e) => shuffleQuestion()} variant="extended" size="small" color="default">
+          <Icon icon="material-symbols:shuffle-outline-rounded" width={22} />
+          shuffle
+        </MFab>
         <ReactCountdownClock
           seconds={60}
           color={theme.palette.primary.main}

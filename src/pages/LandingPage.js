@@ -5,7 +5,7 @@ import Page from '../components/Page';
 export default function LandingPage() {
   return (
     <Page title="Home">
-      KITIWI
+      {/* KITIWI */}
       {/* <LandingHero />
       <Reviews /> */}
     </Page>

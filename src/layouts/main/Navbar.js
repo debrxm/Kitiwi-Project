@@ -110,18 +110,20 @@ export default function DashboardNavbar({ onOpenSidebar }) {
           </LinkStyle>
         </RouterLink>
         <Box sx={{ flexGrow: 1 }} />
-        <Stack direction="row" sx={{ width: '100%', alignItems: 'center' }}>
+        <Stack direction="row" sx={{ width: '100%', alignItems: 'center', mt: { xs: 2, md: 1 } }}>
           <Box sx={{ flexGrow: 1 }} />
 
-          {!user?.email && <LinkStyle href="/auth/register">Leaderboard</LinkStyle>}
-          {!user?.email && (
+          {!user?.email && isDesktop && <LinkStyle href="/auth/register">Leaderboard</LinkStyle>}
+          {/* {!user?.email && (
             <LinkStyle href="/auth/login">
               <Button variant="contained">Sign In</Button>
             </LinkStyle>
-          )}
-          {user?.email && (
+          )} */}
+          {!user?.email && (
             <LinkStyle href="/dashboard">
-              <Button variant="contained">Dashboard</Button>
+              <Button variant="contained" sx={{ borderRadius: 20 }}>
+                Play Now
+              </Button>
             </LinkStyle>
           )}
           <Button
