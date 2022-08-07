@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage';
 // slices
 import userReducer from './slices/user';
-import calendarReducer from './slices/calendar';
+import scambleWordsReducer from './slices/scambleWords';
 
 // ----------------------------------------------------------------------
 
@@ -10,12 +10,12 @@ const rootPersistConfig = {
   key: 'root',
   storage,
   keyPrefix: 'redux-',
-  whitelist: []
+  whitelist: [],
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
-  calendar: calendarReducer,
+  scambleWords: scambleWordsReducer,
 });
 
 export { rootPersistConfig, rootReducer };
