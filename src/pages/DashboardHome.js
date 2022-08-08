@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react';
 import ReactCountdownClock from 'react-countdown-clock';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container, Typography, Box } from '@mui/material';
 import { Time } from '../sections/@dashboard/home';
 // redux
 import {
@@ -225,29 +225,34 @@ export default function DashboardHome() {
                   data-id={item}
                   onClick={(e) => letterDown(e, item)}
                 >
-                  {item}
+                  <Typography variant="h3">{item}</Typography>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <Box>
+            <MFab onClick={(e) => clearAction()} variant="extended" size="small" color="default" sx={{ m: 2 }}>
+              <Icon icon="ic:round-clear-all" width={22} />
+              clear
+            </MFab>
+            <MFab onClick={(e) => shuffleQuestion()} variant="extended" size="small" color="default" sx={{ m: 2 }}>
+              <Icon icon="material-symbols:shuffle-outline-rounded" width={22} />
+              shuffle
+            </MFab>
+          </Box>
 
-        <MFab onClick={(e) => clearAction()} variant="extended" size="small" color="default">
-          <Icon icon="ic:round-clear-all" width={22} />
-          clear
-        </MFab>
-        <MFab onClick={(e) => shuffleQuestion()} variant="extended" size="small" color="default">
-          <Icon icon="material-symbols:shuffle-outline-rounded" width={22} />
-          shuffle
-        </MFab>
-        <ReactCountdownClock
-          seconds={60}
-          color={theme.palette.primary.main}
-          alpha={0.9}
-          size={85}
-          weight={10}
-          onComplete={() => console.log('Finished')}
-        />
+          <ReactCountdownClock
+            seconds={60}
+            color={theme.palette.primary.main}
+            alpha={0.9}
+            size={50}
+            weight={10}
+            onComplete={() => console.log('Finished')}
+          />
+        </Box>
+
         {/* <Time /> */}
         <Grid container spacing={3}>
           <br />

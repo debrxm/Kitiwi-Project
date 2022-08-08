@@ -30,11 +30,11 @@
 } */
 #gameApp .game-container {
     position: relative;
-    max-width: 570px;
+    /* max-width: 570px; */
     margin: auto;
   }
   #controls {
-    max-width: 570px;
+    /* max-width: 570px; */
     text-align: center;
   }
   /* #answers-list {
@@ -65,13 +65,14 @@
   }
   
   #answers-list span.highlight {
-    background: #e82828;
-    color: #fff;
+      background: #e82828;
+      color: #fff;
   }
   
   .game-container ul {
-    list-style: none;
-    display: flex;
+      list-style: none;
+      display: flex;
+      justify-content: center;  
     align-items: center;
     margin: 20px 0;
   }
@@ -90,7 +91,7 @@
     justify-content: center;  
     opacity: 1;  
     font-weight: bold;
-    font-size: 4em;
+    /* font-size: 4em; */
     cursor: pointer;
   }
   ul li:after {
