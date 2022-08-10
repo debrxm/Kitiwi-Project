@@ -12,20 +12,21 @@ const navConfig = [
     icon: getIcon('ic:round-space-dashboard'),
   },
   {
-    title: 'leaderboard',
-    path: '/dashboard/leaderboard',
-    icon: getIcon('majesticons:analytics'),
-  },
-  {
-    title: 'budget',
-    path: '/dashboard/budget',
-    icon: getIcon('lucide:coffee'),
-  },
-  {
     title: 'games',
     path: '/dashboard/games',
     icon: getIcon('fa6-solid:diagram-project'),
   },
+  {
+    title: 'leaderboard',
+    path: '/dashboard/leaderboard',
+    icon: getIcon('majesticons:analytics'),
+  },
+  // {
+  //   title: 'budget',
+  //   path: '/dashboard/budget',
+  //   icon: getIcon('lucide:coffee'),
+  // },
+
   {
     title: 'roadmap',
     path: '/dashboard/roadmap',
