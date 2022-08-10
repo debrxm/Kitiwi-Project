@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 import NotistackProvider from './components/NotistackProvider';
 import ThemePrimaryColor from './components/ThemePrimaryColor';
 import './App.css';
+import './GameControl.css';
 
 // ----------------------------------------------------------------------
 

@@ -221,6 +221,7 @@ export default function DashboardHome() {
                 <li
                   key={index - 1}
                   index={index}
+                  className="game-button"
                   data={dropAreaData(index)}
                   data-id={item}
                   onClick={(e) => letterDown(e, item)}
@@ -233,16 +234,40 @@ export default function DashboardHome() {
         </div>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <Box>
-            <MFab onClick={(e) => clearAction()} variant="extended" size="small" color="default" sx={{ m: 2 }}>
-              <Icon icon="ic:round-clear-all" width={22} />
+            <MFab
+              onClick={(e) => clearAction()}
+              variant="extended"
+              size="small"
+              className="game-button red"
+              color="default"
+              sx={{ m: 2 }}
+            >
+              {/* <Icon icon="ic:round-clear-all" width={22} /> */}
               clear
             </MFab>
-            <MFab onClick={(e) => shuffleQuestion()} variant="extended" size="small" color="default" sx={{ m: 2 }}>
-              <Icon icon="material-symbols:shuffle-outline-rounded" width={22} />
+            <MFab
+              onClick={(e) => {}}
+              variant="extended"
+              size="small"
+              className="game-button green"
+              color="default"
+              sx={{ m: 2 }}
+            >
+              Submit
+            </MFab>
+            <MFab
+              onClick={(e) => shuffleQuestion()}
+              className="game-button blue"
+              variant="extended"
+              size="small"
+              color="default"
+              sx={{ m: 2 }}
+            >
+              {/* <Icon icon="material-symbols:shuffle-outline-rounded" width={22} /> */}
               shuffle
             </MFab>
           </Box>
-
+          <br />
           <ReactCountdownClock
             seconds={60}
             color={theme.palette.primary.main}
